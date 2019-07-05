@@ -1,0 +1,222 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+body  * {
+	box-sizing: border-box;
+}
+/* Helpers */
+.disable-select {
+	-webkit-user-select: none;  
+	-moz-user-select: none;    
+	-ms-user-select: none;      
+	user-select: none;
+}
+
+/* Video */
+.video-container {
+	max-width: 720px;
+	margin: 5px auto;
+	position: relative;
+	overflow: hidden;
+}
+.video-container.fullscreen {
+	max-width: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+}
+.video-container.fullscreen video {
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+video {
+	width: 100%;
+	display: block;
+}
+.controls-wrapper {
+	position: absolute;
+	height: 50px;
+	bottom: -57px;
+	left: 0;
+	right: 0;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.video-container:hover .controls-wrapper {
+	bottom: 0;
+}
+.controls-wrapper * {
+	cursor: pointer;
+}
+.controls-wrapper span {
+	cursor: default;
+	color: #fff;
+}
+.progress-bar {
+	height: 5px;
+	width: 100%;
+	background: #777;
+	cursor: pointer;
+}
+.progress {
+	height: 5px;
+	width: 0%;
+	max-width: 100%;
+	background: #C62129;
+}
+.video-controls {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 45px;
+	background:linear-gradient(to top,rgba(0,0,0,.4) 0,rgba(0,0,0,0) 100%);
+}
+.video-controls > li {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0 5px;
+}
+.video-controls li.fullscreen-container {
+	margin: 0 10px 0 auto;
+}
+.video-controls li input,
+.video-controls li span,
+.video-controls li a {
+	display: inline-block;
+	padding: 0 2px;
+	float: left;
+	height: 24px;
+	line-height: 24px;
+}
+.video-controls li input,
+.video-controls li a {
+	cursor: pointer;
+	width: 20px;
+	overflow: hidden;
+	line-height: 999px;
+	margin: 0;
+	border: none;
+	background: transparent;
+	outline: none;
+}
+.video-controls li a {
+	text-decoration: none;
+}
+.video-controls li input[type="checkbox"] {
+	opacity: 0;
+}
+.video-controls li input.volume-slider {
+	width: 100px;
+	background: #C62129;
+	height: 5px;
+}
+.video-controls input[type="range"],
+.video-controls input[type="range"]:focus {
+	-webkit-appearance: none;
+	height: 4px;
+	background: #C62129;
+	opacity: .8;
+	padding: 0;
+	margin: 0;
+	outline: none;
+	overflow: visible;
+}
+.video-controls input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+	background: #fff;
+	cursor: pointer;
+	margin-top: -1px;
+}
+.video-controls input[type="range"]::-moz-range-thumb {
+	-webkit-appearance: none;
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+	background: #fff;
+	cursor: pointer;
+	margin-top: -2px;
+}
+.playback-rate {
+  position: relative;
+}
+.playback-rate span {
+  width: 55px;
+  text-align: center;
+  color: #333;
+  padding: 5px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+.playback-rate .piker {
+  cursor: pointer;
+  transition: opacity 1s ease-in-out;
+  display: none;
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  padding-bottom: 30px;
+  width: 55px;
+}
+.playback-rate:hover .piker {
+  display: block;
+  opacity: 1;
+  text-align:  center;
+}
+.playback-rate ul {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.12);
+  z-index: 1;
+}
+.playback-rate ul li {
+  color: #fff;
+  text-align: right;
+  margin: 0;
+}
+.playback-rate ul li {
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 5px;
+}
+.playback-rate ul li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.video-controls li input,
+.video-controls li a,
+.video-controls li.mute-toggle { background: url('../img/controls.png') no-repeat top left; width: 20px; height: 20px;  } 
+.video-controls li input.play { background-position: 0 0; } 
+.video-controls li input.pause { background-position: 0 -30px; } 
+.video-controls li .previous { background-position: 0 -60px; } 
+.video-controls li .next { background-position: 0 -90px; } 
+.video-controls li.unmuted { background-position: 0 -120px; } 
+.video-controls li.muted { background-position: 0 -150px; } 
+.video-controls li input.toggle-fullscreen { background-position: 0 -180px; } 
+.video-controls li input.toggle-fullscreen.exit { background-position: 0 -210px; } 
+
+@media screen and (max-width: 376px) {
+	.video-controls li {
+		margin: 0 4px;
+	}
+	.video-controls li input.volume-slider {
+		width: 70px;
+	}
+}
